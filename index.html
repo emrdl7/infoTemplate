@@ -1,34 +1,154 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
     <title>관공서 웹사이트 템플릿</title>
     
-    <meta name="description" content="관공서 웹사이트 템플릿">
-    <link rel="preload" href="assets/css/main.css" as="style">
-    <link rel="preload" href="assets/js/main.js" as="script">
+    <!-- CSS -->
+    <link href="assets/css/boxicons.css" rel="stylesheet">
+    <link href="assets/css/swiper-bundle.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="assets/css/reset.css">
-    <link rel="stylesheet" href="assets/css/main.css">
+    <!-- JavaScript -->
+    <script src="assets/js/jquery-3.5.1.min.js"></script>
+    <script src="assets/js/swiper-bundle.js"></script>
+    <script src="assets/js/common.js"></script>
 </head>
+
 <body>
-    <a href="#main-content" class="skip-link">본문 바로가기</a>
+    <!-- S:skip_navi -->
+    <div class="skip_navi">
+        <a class="sr-only sr-only-focusable" href="#header">메뉴 바로가기</a>
+        <a class="sr-only sr-only-focusable" href="#content">본문 바로가기</a>
+        <a class="sr-only sr-only-focusable" href="#footer">푸터 바로가기</a>
+    </div>
+    <!-- E:skip_navi -->
 
-    <header role="banner">
-        <nav role="navigation" aria-label="주요 메뉴">
-            <!-- 접근성 최적화된 네비게이션 -->
-        </nav>
+    <!-- S:header -->
+    <header id="header">
+        <div class="container">
+            <h1><a href="/"><span>관공서</span> 웹사이트</a></h1>
+            
+            <button class="main-menu" aria-label="메뉴 열기">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <div class="tools">
+                <a class="login" href="">로그인</a>
+            </div>
+        </div>
     </header>
+    <!-- E:header -->
+    
+    <!-- S:main_menu -->
+    <nav id="main-menu">
+        <button class="close" aria-label="메뉴 닫기">닫기</button>
+        
+        <div class="menus">
+            <ul>
+                <li>
+                    <h3><a href="">메뉴1</a></h3>
+                    <ul>
+                        <li><a href="">서브메뉴 1-1</a></li>
+                        <li><a href="">서브메뉴 1-2</a></li>
+                        <li><a href="">서브메뉴 1-3</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <h3><a href="">메뉴2</a></h3>
+                    <ul>
+                        <li><a href="">서브메뉴 2-1</a></li>
+                        <li><a href="">서브메뉴 2-2</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <h3><a href="">메뉴3</a></h3>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="shadow"></div>
+    <!-- E:main_menu -->
 
-    <main id="main-content" role="main">
-        <!-- 메인 콘텐츠 -->
-    </main>
+    <!-- S:mainContent -->
+    <div id="content" class="main" role="main">
+        
+        <!-- 메인 슬라이더 -->
+        <section class="main-swiper-section">
+            <h2 class="sr-only">메인 슬라이더</h2>
+            
+            <div class="main-swiper swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <a href="">
+                            <p class="image">
+                                <img src="https://via.placeholder.com/1200x600" alt="슬라이드 1">
+                            </p>
+                            <p class="text">
+                                <strong>슬라이드 제목 1</strong>
+                                <span class="desc">슬라이드 설명 1</span>
+                            </p>
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="">
+                            <p class="image">
+                                <img src="https://via.placeholder.com/1200x600" alt="슬라이드 2">
+                            </p>
+                            <p class="text">
+                                <strong>슬라이드 제목 2</strong>
+                                <span class="desc">슬라이드 설명 2</span>
+                            </p>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="main-pagination"></div>
+                <div class="main-btns">
+                    <button class="main-prev" aria-label="이전">이전</button>
+                    <button class="main-next" aria-label="다음">다음</button>
+                </div>
+            </div>
+        </section>
 
-    <footer role="contentinfo">
-        <!-- 푸터 콘텐츠 -->
+        <!-- 탭 컨텐츠 -->
+        <section class="main-tabs">
+            <div class="container">
+                <h2>탭 메뉴</h2>
+                
+                <div class="tabs">
+                    <button class="on" data="tab1">탭1</button>
+                    <button data="tab2">탭2</button>
+                    <button data="tab3">탭3</button>
+                </div>
+                
+                <div class="tab-data tab1 on">
+                    <p>탭1 컨텐츠</p>
+                </div>
+                <div class="tab-data tab2">
+                    <p>탭2 컨텐츠</p>
+                </div>
+                <div class="tab-data tab3">
+                    <p>탭3 컨텐츠</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+    <!-- E:mainContent -->
+
+    <!-- S:footer -->
+    <footer id="footer" role="contentinfo">
+        <div class="container">
+            <p>&copy; 2024 관공서. All rights reserved.</p>
+        </div>
     </footer>
+    <!-- E:footer -->
 
-    <script src="assets/js/main.js" type="module"></script>
 </body>
 </html>

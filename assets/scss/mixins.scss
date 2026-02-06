@@ -1,18 +1,54 @@
-@mixin responsive-font-size($mobile, $tablet, $desktop) {
-  font-size: $mobile;
-  
-  @media (min-width: 768px) {
-    font-size: $tablet;
-  }
-  
-  @media (min-width: 1024px) {
-    font-size: $desktop;
-  }
+/* Mixins */
+@use 'variables' as *;
+
+// 컨테이너
+@mixin container($width: $max-width) {
+    width: 100%;
+    max-width: $width;
+    margin: 0 auto;
+    padding: 0 $container-padding;
+    
+    @media (min-width: $screen-size-pc) {
+        padding: 0;
+    }
 }
 
+// 반응형 폰트 사이즈
+@mixin responsive-font-size($mobile, $tablet, $desktop) {
+    font-size: $mobile;
+    
+    @media (min-width: $screen-size-tablet) {
+        font-size: $tablet;
+    }
+    
+    @media (min-width: $screen-size-pc) {
+        font-size: $desktop;
+    }
+}
+
+// 접근성 포커스 스타일
 @mixin accessibility-focus {
-  &:focus {
-    outline: 2px solid blue;
-    outline-offset: 2px;
-  }
+    &:focus {
+        outline: 2px solid $primary-color;
+        outline-offset: 2px;
+    }
+}
+
+// Flexbox 중앙 정렬
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+// 트랜지션
+@mixin transition($property: all, $duration: 0.3s, $timing: ease) {
+    transition: $property $duration $timing;
+}
+
+// 배경 이미지
+@mixin bg-cover {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
