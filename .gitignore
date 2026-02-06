@@ -1,0 +1,14 @@
+# IDE
+.vscode/
+.idea/
+
+# Dependency directories
+node_modules/
+
+# Compiled CSS
+assets/css/*.css
+assets/css/*.css.map
+
+# OS generated files
+.DS_Store
+Thumbs.db

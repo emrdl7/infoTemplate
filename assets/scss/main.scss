@@ -1,0 +1,14 @@
+@use 'variables';
+@use 'mixins';
+
+body {
+  color: variables.$text-color;
+  
+  @include mixins.responsive-font-size(14px, 15px, 16px);
+}
+
+.button {
+  background-color: variables.$primary-color;
+  
+  @include mixins.accessibility-focus;
+}

@@ -1,0 +1,18 @@
+@mixin responsive-font-size($mobile, $tablet, $desktop) {
+  font-size: $mobile;
+  
+  @media (min-width: 768px) {
+    font-size: $tablet;
+  }
+  
+  @media (min-width: 1024px) {
+    font-size: $desktop;
+  }
+}
+
+@mixin accessibility-focus {
+  &:focus {
+    outline: 2px solid blue;
+    outline-offset: 2px;
+  }
+}
