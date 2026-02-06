@@ -9,7 +9,6 @@ infoTemplate/
 ├── index.html
 ├── assets/
 │   ├── css/
-│   │   ├── boxicons.css
 │   │   ├── swiper-bundle.css
 │   │   └── style.css (컴파일된 파일)
 │   ├── js/
@@ -61,7 +60,7 @@ IDE의 SCSS 컴파일러 플러그인 사용:
 다음 파일들이 필요합니다:
 - jQuery 3.5.1
 - Swiper Bundle
-- Boxicons (선택사항)
+- Google Material Icons (CDN으로 자동 로드)
 
 ### 3. 개발 시작
 1. index.html을 브라우저에서 열기
@@ -116,6 +115,24 @@ $screen-size-tablet: 768px;
 ### 메뉴 구조 변경
 `index.html`의 `#main-menu` 섹션 수정
 
+### Material Icons 사용법
+
+**기본 아이콘 (Material Icons):**
+```html
+<span class="material-icons">home</span>
+<span class="material-icons">menu</span>
+<span class="material-icons">search</span>
+```
+
+**아웃라인 아이콘 (Material Symbols):**
+```html
+<span class="material-symbols-outlined">home</span>
+<span class="material-symbols-outlined">menu</span>
+<span class="material-symbols-outlined">search</span>
+```
+
+아이콘 목록: https://fonts.google.com/icons
+
 ## 브라우저 지원
 
 - Chrome (최신)
@@ -129,6 +146,10 @@ $screen-size-tablet: 768px;
 MIT License
 
 ## 변경 이력
+
+### v2.1 (2024-02-06)
+- Boxicons → Google Material Icons로 변경
+- CDN 기반 아이콘 로딩으로 경량화
 
 ### v2.0 (2024-02-06)
 - 실제 프로젝트 패턴 기반으로 전면 재작성
