@@ -37,11 +37,14 @@ infoTemplate/
 - ARIA 속성 사용
 - 키보드 네비게이션 지원
 
-### 3. 코딩 패턴
-- 함수 기반 모듈화
-- 반응형 메뉴 (모바일: 토글, PC: 호버)
-- Swiper 통합
-- 이미지 배경 자동 처리
+### 3. 코딩 패턴 (최적화)
+- **모바일 퍼스트 접근**: 모든 스타일과 스크립트
+- **성능 최적화**: Throttle/Debounce 적용
+- **디바이스 감지**: Responsive 유틸리티 객체
+- **함수 기반 모듈화**: menu(), coverimage(), maintab()
+- **반응형 메뉴**: 모바일(토글), PC(호버)
+- **Lazy Loading**: Intersection Observer 지원
+- **접근성**: ARIA, 키보드 네비게이션, ESC 닫기
 
 ### 4. SCSS 구조
 - **_normalize.scss**: CSS 리셋
@@ -73,27 +76,81 @@ IDE의 SCSS 컴파일러 플러그인 사용:
 - **Tablet**: 768px ~ 1028px  
 - **PC**: 1029px 이상
 
-## 주요 함수
+## 주요 함수 및 유틸리티
 
 ### common.js
 
 ```javascript
-menu()          // 메뉴 토글 및 네비게이션
-coverimage()    // 이미지 배경 처리
-maintab()       // 탭 기능
-initSwiper()    // Swiper 초기화
-outlink()       // 외부 링크 처리
+// 핵심 함수
+menu()              // 메뉴 토글 및 네비게이션
+coverimage()        // 이미지 배경 처리 (Lazy Loading 지원)
+maintab()           // 탭 기능
+initSwiper()        // Swiper 초기화
+outlink()           // 외부 링크 처리
+
+// 반응형 유틸리티
+Responsive.getDevice()        // 'mobile', 'tablet', 'pc' 반환
+Responsive.isMobile()         // 모바일 체크
+Responsive.isTablet()         // 태블릿 체크
+Responsive.isPc()             // PC 체크
+Responsive.isMobileOrTablet() // 모바일 또는 태블릿 체크
+
+// 성능 최적화
+throttle(func, delay)   // Throttle 함수
+debounce(func, delay)   // Debounce 함수
+
+// 스크롤 유틸리티
+ScrollUtils.smoothScroll(target, offset)  // 부드러운 스크롤
+ScrollUtils.initTopButton()                // Top 버튼 초기화
 ```
 
-## SCSS Mixins
+## SCSS Mixins (모바일 퍼스트)
 
+### 반응형
 ```scss
-@include container($width)                      // 컨테이너
-@include responsive-font-size($m, $t, $d)      // 반응형 폰트
-@include accessibility-focus                    // 접근성 포커스
-@include flex-center                            // Flexbox 중앙
-@include transition($property, $duration)       // 트랜지션
-@include bg-cover                              // 배경 이미지
+@include tablet { ... }              // 768px 이상
+@include pc { ... }                  // 1029px 이상
+@include mobile-only { ... }         // 767px 이하
+@include tablet-only { ... }         // 768px ~ 1028px
+@include respond-to(900px) { ... }   // 커스텀 브레이크포인트
+```
+
+### 레이아웃
+```scss
+@include container($max-width)       // 컨테이너
+@include flex-center                 // Flex 중앙 정렬
+@include flex-between                // Flex 양쪽 정렬
+@include flex-column                 // Flex 세로 배치
+@include grid-auto(250px, 20px)      // Auto-fit Grid
+```
+
+### 타이포그래피
+```scss
+@include font-responsive(14px, 16px, 18px)  // 반응형 폰트
+@include ellipsis(2)                         // 2줄 말줄임
+```
+
+### 효과
+```scss
+@include transition(all, 0.3s, ease)   // 트랜지션
+@include hover-lift(5px)               // 호버 시 상승
+@include hover-scale(1.05)             // 호버 시 확대
+@include bg-cover                      // 배경 커버
+@include aspect-ratio(16, 9)           // 종횡비 유지
+```
+
+### 접근성
+```scss
+@include focus-visible               // 포커스 스타일
+@include sr-only                     // 스크린리더 전용
+```
+
+### 기타
+```scss
+@include card(20px, 8px)             // 카드 스타일
+@include custom-scrollbar(8px)       // 커스텀 스크롤바
+@include button-reset                // 버튼 리셋
+@include link-reset                  // 링크 리셋
 ```
 
 ## 커스터마이징
@@ -146,6 +203,16 @@ $screen-size-tablet: 768px;
 MIT License
 
 ## 변경 이력
+
+### v2.2 (2024-02-06)
+- **성능 최적화**: Throttle/Debounce 적용
+- **모바일 퍼스트**: 모든 SCSS를 모바일 우선으로 재작성
+- **반응형 유틸리티**: Responsive 객체 추가
+- **실용적인 Mixins**: 20+ 개의 실전 믹스인
+- **Lazy Loading**: Intersection Observer 지원
+- **접근성 개선**: ESC 키 닫기, ARIA 속성
+- **Top 버튼**: 스크롤 상단 이동 기능
+- **유틸리티 클래스**: d-none, d-tablet-none 등
 
 ### v2.1 (2024-02-06)
 - Boxicons → Google Material Icons로 변경
