@@ -1,0 +1,57 @@
+// 필수 믹스인만 유지 (vendor prefix는 autoprefixer가 처리)
+
+// 텍스트 말줄임
+@mixin ellipsis {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+// Flexbox 중앙정렬
+@mixin flex-center {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+// Placeholder 스타일링
+@mixin placeholder {
+	&::placeholder {
+		@content;
+	}
+}
+
+// 배경 이미지 커버
+@mixin bg-cover($url: null) {
+	background: {
+		@if $url {
+			image: url($url);
+		}
+		repeat: no-repeat;
+		size: cover;
+		position: center;
+	}
+}
+
+// 그림자
+@mixin shadow($x: 0, $y: 2px, $blur: 8px, $color: rgba(0, 0, 0, 0.1)) {
+	box-shadow: $x $y $blur $color;
+}
+
+// 반응형 미디어쿼리
+@mixin pc {
+	@media (min-width: $breakpoint-pc) {
+		@content;
+	}
+}
+
+@mixin mobile {
+	@media (max-width: #{$breakpoint-pc - 1px}) {
+		@content;
+	}
+}
+
+// 트랜지션
+@mixin transition($property: all, $duration: 0.3s, $timing: ease) {
+	transition: $property $duration $timing;
+}

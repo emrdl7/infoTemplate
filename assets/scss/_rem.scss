@@ -1,0 +1,8 @@
+// 간단한 rem 변환 함수
+$base-font-size: 16px !default;
+
+@function rem($pixels) {
+  @return ($pixels / $base-font-size) * 1rem;
+}
+
+// 사용법: font-size: rem(14px); → 0.875rem
