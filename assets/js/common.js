@@ -6,20 +6,20 @@ $(function(){
     initSwiper();
 });
 
-/* ----- 반응형 유틸리티 ----- */
+/* ----- 반응형 유틸리티 (업계 표준 브레이크포인트) ----- */
 const Responsive = {
     breakpoints: {
         mobile: 320,
-        tablet: 768,
-        pc: 1029
+        tablet: 768,   // 태블릿 시작
+        desktop: 1024  // 데스크톱 시작
     },
     
     // 현재 디바이스 타입 반환
     getDevice: function() {
         const width = window.innerWidth;
         if (width < this.breakpoints.tablet) return 'mobile';
-        if (width < this.breakpoints.pc) return 'tablet';
-        return 'pc';
+        if (width < this.breakpoints.desktop) return 'tablet';
+        return 'desktop';
     },
     
     // 특정 디바이스인지 체크
@@ -31,13 +31,18 @@ const Responsive = {
         return this.getDevice() === 'tablet';
     },
     
+    isDesktop: function() {
+        return this.getDevice() === 'desktop';
+    },
+    
+    // 하위 호환성 별칭
     isPc: function() {
-        return this.getDevice() === 'pc';
+        return this.isDesktop();
     },
     
     // 모바일 또는 태블릿인지 체크
     isMobileOrTablet: function() {
-        return window.innerWidth < this.breakpoints.pc;
+        return window.innerWidth < this.breakpoints.desktop;
     }
 };
 

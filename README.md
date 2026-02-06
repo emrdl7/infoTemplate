@@ -70,11 +70,13 @@ IDE의 SCSS 컴파일러 플러그인 사용:
 2. SCSS 수정 후 자동 컴파일 확인
 3. common.js에서 기능 추가
 
-## 브레이크포인트
+## 브레이크포인트 (업계 표준)
 
 - **Mobile**: 320px ~ 767px
-- **Tablet**: 768px ~ 1028px  
-- **PC**: 1029px 이상
+- **Tablet**: 768px ~ 1023px  
+- **Desktop**: 1024px 이상
+
+> Bootstrap, Tailwind CSS 등 주요 프레임워크와 호환되는 표준 브레이크포인트를 사용합니다.
 
 ## 주요 함수 및 유틸리티
 
@@ -89,10 +91,11 @@ initSwiper()        // Swiper 초기화
 outlink()           // 외부 링크 처리
 
 // 반응형 유틸리티
-Responsive.getDevice()        // 'mobile', 'tablet', 'pc' 반환
-Responsive.isMobile()         // 모바일 체크
-Responsive.isTablet()         // 태블릿 체크
-Responsive.isPc()             // PC 체크
+Responsive.getDevice()        // 'mobile', 'tablet', 'desktop' 반환
+Responsive.isMobile()         // 모바일 체크 (~767px)
+Responsive.isTablet()         // 태블릿 체크 (768px~1023px)
+Responsive.isDesktop()        // 데스크톱 체크 (1024px~)
+Responsive.isPc()             // 데스크톱 별칭 (하위 호환성)
 Responsive.isMobileOrTablet() // 모바일 또는 태블릿 체크
 
 // 성능 최적화
@@ -109,9 +112,10 @@ ScrollUtils.initTopButton()                // Top 버튼 초기화
 ### 반응형
 ```scss
 @include tablet { ... }              // 768px 이상
-@include pc { ... }                  // 1029px 이상
-@include mobile-only { ... }         // 767px 이하
-@include tablet-only { ... }         // 768px ~ 1028px
+@include desktop { ... }             // 1024px 이상
+@include pc { ... }                  // 1024px 이상 (별칭)
+@include mobile-only { ... }         // ~767px
+@include tablet-only { ... }         // 768px ~ 1023px
 @include respond-to(900px) { ... }   // 커스텀 브레이크포인트
 ```
 
@@ -203,6 +207,14 @@ $screen-size-tablet: 768px;
 MIT License
 
 ## 변경 이력
+
+### v2.3 (2024-02-06)
+- **브레이크포인트 표준화**: 업계 표준으로 변경
+  - Mobile: ~767px
+  - Tablet: 768px ~ 1023px
+  - Desktop: 1024px 이상
+- Bootstrap, Tailwind CSS와 호환
+- 하위 호환성 유지 (pc → desktop 별칭)
 
 ### v2.2 (2024-02-06)
 - **성능 최적화**: Throttle/Debounce 적용

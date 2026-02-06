@@ -8,9 +8,13 @@ $bg-color: #fff;
 $border-color: #ddd;
 $link-color: #0066cc;
 
-// 브레이크포인트
-$screen-size-pc: 1029px;
-$screen-size-tablet: 768px;
+// 브레이크포인트 (업계 표준)
+$breakpoint-tablet: 768px;   // 태블릿 시작
+$breakpoint-desktop: 1024px; // 데스크톱 시작
+
+// 하위 호환성을 위한 별칭
+$screen-size-tablet: $breakpoint-tablet;
+$screen-size-pc: $breakpoint-desktop;
 $screen-size-mobile: 320px;
 
 // 기타

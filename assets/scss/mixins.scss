@@ -3,30 +3,37 @@
 
 /* ----- 반응형 믹스인 (모바일 퍼스트) ----- */
 
-// 태블릿 이상
+// 태블릿 이상 (768px~)
 @mixin tablet {
-    @media (min-width: #{$screen-size-tablet}) {
+    @media (min-width: #{$breakpoint-tablet}) {
         @content;
     }
 }
 
-// PC 이상
+// 데스크톱 이상 (1024px~)
+@mixin desktop {
+    @media (min-width: #{$breakpoint-desktop}) {
+        @content;
+    }
+}
+
+// PC 별칭 (하위 호환성)
 @mixin pc {
-    @media (min-width: #{$screen-size-pc}) {
+    @media (min-width: #{$breakpoint-desktop}) {
         @content;
     }
 }
 
-// 모바일 전용
+// 모바일 전용 (~767px)
 @mixin mobile-only {
-    @media (max-width: #{$screen-size-tablet - 1px}) {
+    @media (max-width: #{$breakpoint-tablet - 1px}) {
         @content;
     }
 }
 
-// 태블릿 전용
+// 태블릿 전용 (768px ~ 1023px)
 @mixin tablet-only {
-    @media (min-width: #{$screen-size-tablet}) and (max-width: #{$screen-size-pc - 1px}) {
+    @media (min-width: #{$breakpoint-tablet}) and (max-width: #{$breakpoint-desktop - 1px}) {
         @content;
     }
 }
